@@ -6,9 +6,6 @@ import lombok.Setter;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
