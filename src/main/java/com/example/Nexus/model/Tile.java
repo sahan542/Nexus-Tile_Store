@@ -1,31 +1,36 @@
 package com.example.Nexus.model;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.math.BigDecimal;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-@Document(collection = "Tile")
+@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 public class Tile {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String collectionType;
     private String groupType;
-    private String tileName;
-    private String tileSize;
-    private String tileColor;
+    private BigDecimal price;
+    private String color;
+    private String size;
     private String finishingType;
-    private Integer tilePrice;
     private boolean isBooked = false;
+    @Lob
+    private Blob photo;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<BookedTile> bookings;
-    private byte[] photo;
 
     public Tile() {
         this.bookings = new ArrayList<>();

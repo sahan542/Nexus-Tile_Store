@@ -1,4 +1,4 @@
 package com.example.Nexus.service;
 
-public interface ITileService {
+public class TileServiceImpl {
 }
