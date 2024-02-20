@@ -29,7 +29,7 @@ public class Tile {
     private boolean isBooked = false;
     @Lob
     private Blob photo;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy= "tile", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<BookedTile> bookings;
 
     public Tile() {
