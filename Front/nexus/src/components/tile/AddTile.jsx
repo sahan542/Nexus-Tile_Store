@@ -18,7 +18,7 @@ const AddTile = () => {
     const [imagePreview, setImagePreview] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-
+/*
     const handleTileInputChange = (e) =>{
         const name = e.target.name 
         let value = e.target.value 
@@ -31,7 +31,12 @@ const AddTile = () => {
             }
         }
         setNewTile({...newTile, [name]: value})
+    } */
+    const handleTileInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewTile({ ...newTile, [name]: value });
     }
+
 
     const handleImageChange = (e) =>{
         const selectedImage = e.target.files[0]
@@ -72,14 +77,16 @@ const AddTile = () => {
                     <div className="mb-3">
                         <label htmlFor="collectionType" className="form-label">Collection Type</label>
                         <div>
-                            <CollectionTypeSelector handleTileInputChange={handleTileInputChange} newTile={newTile}/>
+                            <CollectionTypeSelector handleCollectionInputChange={handleTileInputChange} newTile={newTile}/>
                         </div>
                     </div>
+
+
 
                     <div className="mb-3">
                         <label htmlFor="groupType" className="form-label">Group Type</label>
                         <div>
-                            <GroupTypeSelector handleTileInputChange={handleTileInputChange} newTile={newTile}/>
+                            <GroupTypeSelector handleGroupInputChange={handleTileInputChange} newTile={newTile}/>
                         </div>
                     </div>
 

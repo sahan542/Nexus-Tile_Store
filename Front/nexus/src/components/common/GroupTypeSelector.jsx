@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getGroupTypes } from '../utils/ApiFunctions';
+import PropTypes from 'prop-types';
 
 const GroupTypeSelector = ({handleGroupInputChange, newTile}) => {
     const[groupTypes, setGroupTypes] = useState([""]);
@@ -8,8 +9,15 @@ const GroupTypeSelector = ({handleGroupInputChange, newTile}) => {
 
     useEffect(() => {
         getGroupTypes().then((data) => {
-            setGroupTypes(data)
+            if (Array.isArray(data)) {
+                setGroupTypes(data);
+            } else {
+                console.log("Invalid data received from getGroupTypes:", data);
+            }
         })
+        .catch((error) => {
+            console.error("Error fetching room types:", error);
+        });
     }, [])
 
     const handleNewGroupTypeInputChange = (e) =>{
@@ -18,9 +26,9 @@ const GroupTypeSelector = ({handleGroupInputChange, newTile}) => {
 
     const handleAddNewGroupType = () =>{
         if(newGroupType !== ""){
-            setGroupTypes([...groupTypes, newGroupType])
-            setNewGroupType("")
-            setShowNewGroupTypeInput(false)
+            setGroupTypes([...groupTypes, newGroupType]);
+            setNewGroupType("");
+            setShowNewGroupTypeInput(false);
         }
     }
 
@@ -35,10 +43,10 @@ const GroupTypeSelector = ({handleGroupInputChange, newTile}) => {
                 value={newTile.groupTypes}
                 onChange={(e) =>{
                     if(e.target.value == "Add New"){
-                        setShowNewGroupTypeInput(true)
+                        setShowNewGroupTypeInput(true);
                     }
                     else{
-                        handleGroupInputChange(e)
+                        handleGroupInputChange(e);
                     }
                 }}
             >
