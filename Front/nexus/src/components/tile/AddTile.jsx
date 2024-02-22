@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { addTile } from '../utils/ApiFunctions';
+import CollectionTypeSelector from '../common/CollectionTypeSelector';
+import GroupTypeSelector from '../common/GroupTypeSelector';
 
 const AddTile = () => {
 
@@ -22,10 +24,10 @@ const AddTile = () => {
         let value = e.target.value 
         if(name === "price"){
             if(!isNaN(value)){
-                value.parseInt(value)
+                value = parseInt(value);
             }
             else{
-                value=""
+                value = ""
             }
         }
         setNewTile({...newTile, [name]: value})
@@ -69,12 +71,16 @@ const AddTile = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="collectionType" className="form-label">Collection Type</label>
-                        <div></div>
+                        <div>
+                            <CollectionTypeSelector handleTileInputChange={handleTileInputChange} newTile={newTile}/>
+                        </div>
                     </div>
 
                     <div className="mb-3">
                         <label htmlFor="groupType" className="form-label">Group Type</label>
-                        <div></div>
+                        <div>
+                            <GroupTypeSelector handleTileInputChange={handleTileInputChange} newTile={newTile}/>
+                        </div>
                     </div>
 
                     <div className="mb-3">

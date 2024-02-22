@@ -1,7 +1,7 @@
-import axios from axios;
+import axios from "axios"
 
 export const api = axios.create({
-    baseURL : "http://localhost:8092"
+	baseURL: "http://localhost:8092"
 })
 
 //This function add new tiles to he database
