@@ -66,7 +66,7 @@ const GroupTypeSelector = ({handleGroupInputChange, newTile}) => {
                         placeholder='Enter a new group Type'
                         onChange={handleNewGroupTypeInputChange}
                     />
-                    <button className='btn btn-tile' type='button' onClick={handleAddNewGroupType}>
+                    <button className='btn btn-hotel' type='button' onClick={handleAddNewGroupType}>
                         Add</button>
                     
                 </div>

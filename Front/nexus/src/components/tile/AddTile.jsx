@@ -3,6 +3,7 @@ import { addTile } from '../utils/ApiFunctions';
 import CollectionTypeSelector from '../common/CollectionTypeSelector';
 import GroupTypeSelector from '../common/GroupTypeSelector';
 
+
 const AddTile = () => {
 
     const [newTile, setNewTile] = useState({

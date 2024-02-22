@@ -67,7 +67,7 @@ const CollectionTypeSelector = ({handleCollectionInputChange, newTile}) => {
                     placeholder='Enter a new Collection Type'
                     onChange={handleNewCollectionTypeInputChange}
                     />
-                    <button className='btn btn-tile' type='button' onClick={handleAddNewCollectionType}>Add</button>
+                    <button className='btn btn-hotel' type='button' onClick={handleAddNewCollectionType}>Add</button>
                    
                 </div>
             )}
