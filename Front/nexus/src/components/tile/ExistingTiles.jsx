@@ -88,6 +88,7 @@ const ExistingTiles = () => {
                 <tbody>
                     {currentTiles.map((tile)=>(
                         <tr key={tile.id} className='text-center'>
+                            <td>{tile.id}</td>
                             <td>{tile.collectionType}</td>
                             <td>{tile.groupType}</td>
                             <td>{tile.price}</td>
