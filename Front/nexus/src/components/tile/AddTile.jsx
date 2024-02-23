@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { addTile } from '../utils/ApiFunctions';
 import CollectionTypeSelector from '../common/CollectionTypeSelector';
 import GroupTypeSelector from '../common/GroupTypeSelector';
+import ExistingTiles from './ExistingTiles';
 
 
 const AddTile = () => {
@@ -187,6 +188,7 @@ const AddTile = () => {
             </div>
         </div>
     </section>
+        <ExistingTiles />
       
     </>
   )
