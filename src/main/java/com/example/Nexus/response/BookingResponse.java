@@ -20,11 +20,10 @@ public class BookingResponse {
     private String bookingConfirmationCode;
     private TileResponse tile;
 
+
     public BookingResponse(Long id, LocalDate bookingDate, String bookingConfirmationCode) {
         this.id = id;
         this.bookingDate = bookingDate;
         this.bookingConfirmationCode = bookingConfirmationCode;
     }
-
-
 }

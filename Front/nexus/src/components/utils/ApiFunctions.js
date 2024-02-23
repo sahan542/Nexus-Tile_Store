@@ -45,3 +45,16 @@ export async function getGroupTypes(){
         throw new Error("Error Fetching Group Types")
     }
 }
+
+/*This function gets all tiles from database */
+export async function getAllTiles(){
+    try{
+        const result = await api.get("/tiles/all-tiles")
+        return result.data
+
+    }
+    catch(error){
+        throw new Error("Error Fetching Tiles");
+
+    }
+}

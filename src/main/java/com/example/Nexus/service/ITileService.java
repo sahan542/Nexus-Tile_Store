@@ -16,4 +16,8 @@ public interface ITileService {
     List<String> getAllCollectionTypes();
 
     List<String> getAllGroupTypes();
+
+    List<Tile> getAllTiles();
+
+    byte[] getTilePhotoByTileId(Long tileId) throws SQLException;
 }
