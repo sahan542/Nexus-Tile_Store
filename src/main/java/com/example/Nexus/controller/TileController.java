@@ -71,23 +71,31 @@ public class TileController {
 
     private TileResponse getTileResponse(Tile tile) {
         List<BookedTile> bookings = getAllBookingsByTileId(tile.getId());
-        List<BookingResponse> bookingInfo = bookings
-                .stream().map(booking -> new BookingResponse(booking.getBookingId(),
-                        booking.getBookingDate(), booking.getBookingConfirmationCode())).toList();
-        byte[] photoBytes = null;
-        Blob photoBlob = tile.getPhoto();
-        if(photoBlob != null){
-            try{
-                photoBytes = photoBlob.getBytes(1, (int) photoBlob.length());
 
-            }
-            catch(SQLException e){
-                throw new PhotoRetrievalException("Error Retrieving photo");
+        // Check if bookings is null, if so, initialize it as an empty list
+        if (bookings == null) {
+            bookings = new ArrayList<>();
+        }
+
+        List<BookingResponse> bookingInfo = bookings.stream()
+                .map(booking -> new BookingResponse(booking.getBookingId(),
+                        booking.getBookingDate(),
+                        booking.getBookingConfirmationCode()))
+                .toList();
+
+        byte[] photoBytes = null;
+        if (tile.getPhoto() != null) {
+            Blob photoBlob = tile.getPhoto();
+            try {
+                photoBytes = photoBlob.getBytes(1, (int) photoBlob.length());
+            } catch (SQLException e) {
+                throw new PhotoRetrievalException("Error Retrieving photo", e);
             }
         }
+
         return new TileResponse(tile.getId(), tile.getCollectionType(), tile.getGroupType(),
-                                tile.getPrice(), tile.getColor(), tile.getSize(), tile.getFinishingType(), tile.isBooked(),
-                                 photoBytes, bookingInfo );
+                tile.getPrice(), tile.getColor(), tile.getSize(), tile.getFinishingType(), tile.isBooked(),
+                photoBytes, bookingInfo);
     }
 
     private List<BookedTile> getAllBookingsByTileId(Long tileId) {
