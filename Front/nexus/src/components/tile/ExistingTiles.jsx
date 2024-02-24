@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { deleteTile, getAllTiles } from '../utils/ApiFunctions'
-import { Col } from "react-bootstrap"
+import { Col, Row } from "react-bootstrap"
 import TileFilter from '../common/TileFilter'
 import TilePaginator from '../common/TilePaginator'
 import { FaEdit, FaEye, FaPlus, FaTrashAlt } from "react-icons/fa"
@@ -8,11 +8,24 @@ import { Link } from "react-router-dom"
 
 
 const ExistingTiles = () => {
-    const[tiles, setTiles] = useState([{ id: "", collectionType: "", groupType: "", price: "", color: "", size: "", finishingType: ""}])
+    const[tiles, setTiles] = useState([{ 
+                id: "", 
+                collectionType: "", 
+                groupType: "", 
+                price: "", 
+                color: "", 
+                size: "", 
+                finishingType: ""}])
     const[currentPage, setCurrentPage] = useState(1)
     const[tilesPerPage] = useState(8)
     const[isLoading, setIsLoading] = useState(false)
-    const[filteredTiles, setFilteredTiles] = useState([{ id: "", collectionType: "", groupType: "", price: "", color: "", size: "", finishingType: ""}])
+    const[filteredTiles, setFilteredTiles] = useState([{ id: "", 
+                                            collectionType: "", 
+                                            groupType: "", 
+                                            price: "", 
+                                            color: "", 
+                                            size: "", 
+                                            finishingType: ""}])
     const[selectedCollectionType, setSelectedCollectionType] = useState("")
     const[successMessage, setSuccessMessage] = useState("")
     const[errorMessage, setErrorMessage] = useState("")
@@ -49,7 +62,7 @@ const ExistingTiles = () => {
         setCurrentPage(pageNumber)
     }
 
-    const handleDelete = async(tileId) =>{
+    const handleDelete = async (tileId) =>{
         try{
             const result = await deleteTile(tileId)
             if(result === ""){
@@ -59,19 +72,17 @@ const ExistingTiles = () => {
             else{
                 console.error(`Error Deleting Tile Design : ${result.message}`)
             }
-            setTimeout(() =>{
+            }
+            catch (error) {
+                setErrorMessage(error.message)
+            }
+            setTimeout(() => {
                 setSuccessMessage("")
                 setErrorMessage("")
             }, 3000)
-
-        }
-        catch(error){
-            setErrorMessage(error.message)
         }
 
-    }
-
-    const calculateTotalPages = (filteredTiles, tilesPerPage, tiles) =>{
+    const calculateTotalPages = (filteredTiles, tilesPerPage, tiles) => {
         const totalTiles = filteredTiles.length > 0 ? filteredTiles.length : tiles.length
         return Math.ceil(totalTiles / tilesPerPage)
     }
@@ -83,6 +94,12 @@ const ExistingTiles = () => {
 
   return (
     <>
+    <div className="container col-md-8 col-lg-6">
+				{successMessage && <p className="alert alert-success mt-5">{successMessage}</p>}
+
+				{errorMessage && <p className="alert alert-danger mt-5">{errorMessage}</p>}
+			</div>
+
     {isLoading ? (
         <p>Loading Existing Tile Designs</p>
     ):(
@@ -92,10 +109,18 @@ const ExistingTiles = () => {
                 <h2>Existing Tile Designs</h2>
 
             </div>
-            <Col md={6} className="mb-3 mb-md-0">
-                <TileFilter data={tiles} setFilteredData={setFilteredTiles} />
-            
-            </Col>
+				<Row>
+					<Col md={6} className="mb-2 md-mb-0">
+                        <TileFilter data={tiles} setFilteredData={setFilteredTiles}
+                            />
+					</Col>
+
+					<Col md={6} className="d-flex justify-content-end">
+						<Link to={"/add-room"}>
+							<FaPlus /> Add Room
+						</Link>
+					</Col>
+				</Row>
             <table className="table table-borederd table-hover">
                 <thead>
                     <tr className="text-center">

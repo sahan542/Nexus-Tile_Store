@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 const EditTile = () => {
     const [tile, setTile] = useState({
-        photo : null,
+        photo : "",
         collectionType : "",
         groupType : "",
         price : "",
@@ -17,7 +17,6 @@ const EditTile = () => {
     const [imagePreview, setImagePreview] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-
     const { tileId } = useParams()
 
 
@@ -27,10 +26,24 @@ const EditTile = () => {
         setImagePreview(URL.createObjectURL(selectedImage))
     }
 
-    const handleTileInputChange = (event) => {
+    const handleInputChange = (event) => {
         const { name, value } = event.target;
         setTile({ ...tile, [name]: value });
     }
+
+    useEffect(() => {
+        const fetchTile = async () => {
+            try{
+                const tileData = await getTileById(tileId)
+                setTile(tileData)
+                setImagePreview(tileData.photo)
+            }
+            catch(error){
+                console.error(error)
+            }
+        }
+        fetchTile()
+    }, [tileId])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -50,32 +63,18 @@ const EditTile = () => {
 
         }
         catch(error){
+            console.error(error)
             setErrorMessage(error.message)
         }
-        setTimeout(() => {
-            setSuccessMessage("")
-            setErrorMessage("")
-        }, 3000)
+
     }
 
-    useEffect(() => {
-        const fetchTile = async () => {
-            try{
-                const tileData = await getTileById(tileId)
-                setTile(tileData)
-                setImagePreview(tileData.photo)
-            }
-            catch(error){
-                console.error(error)
-            }
-        }
-        fetchTile()
-    }, [tileId])
+    
 
 
   return (
     <div className="container mt-5 mb-5">
-			<h3 className="text-center mb-5 mt-5">Edit Room</h3>
+			<h3 className="text-center mb-5 mt-5">Edit Tile</h3>
 			<div className="row justify-content-center">
 				<div className="col-md-8 col-lg-6">
 					{successMessage && (
@@ -99,7 +98,7 @@ const EditTile = () => {
 								id="collectionType"
 								name="collectionType"
 								value={tile.collectionType}
-								onChange={handleTileInputChange}
+								onChange={handleInputChange}
 							/>
 						</div>
 
@@ -113,12 +112,12 @@ const EditTile = () => {
 								id="groupType"
 								name="groupType"
 								value={tile.groupType}
-								onChange={handleTileInputChange}
+								onChange={handleInputChange}
 							/>
 						</div>
 
                     <div className="mb-3">
-                        <label htmlFor="price" className="form-label">Price</label>
+                        <label htmlFor="price" className="form-label hotel-color">Price</label>
                         <input
                             className="form-control"
                             required
@@ -126,12 +125,12 @@ const EditTile = () => {
                             name='price'
                             type="number"
                             value={tile.price}
-                            onChange={handleTileInputChange}
+                            onChange={handleInputChange}
                         />
                     </div>
 
                     <div className="mb-3">
-                        <label htmlFor="color" className="form-label">Color</label>
+                        <label htmlFor="color" className="form-label hotel-color">Color</label>
                         <input
                             className="form-control"
                             required
@@ -139,12 +138,12 @@ const EditTile = () => {
                             name='color'
                             type="text"
                             value={tile.color}
-                            onChange={handleTileInputChange}
+                            onChange={handleInputChange}
                         />
                     </div>
 
                     <div className="mb-3">
-                        <label htmlFor="size" className="form-label">Size</label>
+                        <label htmlFor="size" className="form-label hotel-color">Size</label>
                         <input
                             className="form-control"
                             required
@@ -152,12 +151,12 @@ const EditTile = () => {
                             name='size'
                             type="text"
                             value={tile.size}
-                            onChange={handleTileInputChange}
+                            onChange={handleInputChange}
                         />
                     </div>
 
                     <div className="mb-3">
-                        <label htmlFor="size" className="form-label">Finishing Type</label>
+                        <label htmlFor="size" className="form-label hotel-color">Finishing Type</label>
                         <input
                             className="form-control"
                             required
@@ -165,13 +164,14 @@ const EditTile = () => {
                             name='finishingType'
                             type="text"
                             value={tile.finishingType}
-                            onChange={handleTileInputChange}
+                            onChange={handleInputChange}
                         />
                     </div>
 
                     <div className="mb-3">
-                        <label htmlFor="photo" className="form-label">Tile Photo</label>
+                        <label htmlFor="photo" className="form-label hotel-color">Tile Photo</label>
                         <input
+                            required
                             id="photo"
                             name="photo"
                             type="file"
@@ -179,15 +179,15 @@ const EditTile = () => {
                             onChange={handleImageChange}
                         />
                         {imagePreview && (
-                            <img src={imagePreview} 
-                            alt="Preview Tile Photo"
-                            style={{maxWidth: "400px", maxHeight: "400px"}}
-                            className="mb-3"
+                            <img src={`data:image/jpeg;base64,${imagePreview}`}
+                            alt="Tile preview"
+                            style={{ maxWidth: "400px", maxHeight: "400" }}
+                            className="mt-3"
                             />
                         )}
                     </div>
 						<div className="d-grid gap-2 d-md-flex mt-2">
-							<Link to={"/existing-rooms"} className="btn btn-outline-info ml-5">
+							<Link to={"/existing-tiles"} className="btn btn-outline-info ml-5">
 								back
 							</Link>
 							<button type="submit" className="btn btn-outline-warning">
