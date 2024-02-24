@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { getAllTiles } from '../utils/ApiFunctions'
+import { deleteTile, getAllTiles } from '../utils/ApiFunctions'
 import { Col } from "react-bootstrap"
 import TileFilter from '../common/TileFilter'
 import TilePaginator from '../common/TilePaginator'
+import { FaEdit, FaEye, FaPlus, FaTrashAlt } from "react-icons/fa"
+import { Link } from "react-router-dom"
 
 
 const ExistingTiles = () => {
@@ -45,6 +47,28 @@ const ExistingTiles = () => {
 
     const handlePaginationClick = (pageNumber) =>{
         setCurrentPage(pageNumber)
+    }
+
+    const handleDelete = async(tileId) =>{
+        try{
+            const result = await deleteTile(tileId)
+            if(result === ""){
+                setSuccessMessage(`Tile No ${tileId} was deleted`)
+                fetchTiles()
+            }
+            else{
+                console.error(`Error Deleting Tile Design : ${result.message}`)
+            }
+            setTimeout(() =>{
+                setSuccessMessage("")
+                setErrorMessage("")
+            }, 3000)
+
+        }
+        catch(error){
+            setErrorMessage(error.message)
+        }
+
     }
 
     const calculateTotalPages = (filteredTiles, tilesPerPage, tiles) =>{
@@ -95,9 +119,20 @@ const ExistingTiles = () => {
                             <td>{tile.color}</td>
                             <td>{tile.size}</td>
                             <td>{tile.finishingType}</td>
-                            <td>
-                                <button>View/Edit</button>
-                                <button>Delete</button>
+                            <td className="gap-2">
+                            <Link to={`/edit-tile/${tile.id}`} className="gap-2">
+												<span className="btn btn-info btn-sm">
+													<FaEye />
+												</span>
+												<span className="btn btn-warning btn-sm ml-5">
+													<FaEdit />
+												</span>
+											</Link>
+											<button
+												className="btn btn-danger btn-sm ml-5"
+												onClick={() => handleDelete(tile.id)}>
+												<FaTrashAlt />
+											</button>
                             </td>
 
                         </tr>

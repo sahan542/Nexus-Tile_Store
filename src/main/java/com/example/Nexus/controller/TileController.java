@@ -1,6 +1,7 @@
 package com.example.Nexus.controller;
 
 import com.example.Nexus.exception.PhotoRetrievalException;
+import com.example.Nexus.exception.ResourceNotFoundException;
 import com.example.Nexus.model.BookedTile;
 import com.example.Nexus.model.Tile;
 import com.example.Nexus.response.BookingResponse;
@@ -10,16 +11,19 @@ import com.example.Nexus.service.ITileService;
 import com.example.Nexus.service.TileService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.codec.binary.Base64;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.sql.rowset.serial.SerialBlob;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -68,7 +72,38 @@ public class TileController {
         }
         return ResponseEntity.ok(tileResponses);
     }
+    @DeleteMapping("/delete/tile/{tileId}")
+    public ResponseEntity<Void> deleteTile(@PathVariable Long tileId){
+        tileService.deleteTile(tileId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
+    @PutMapping("/update/{tileId}")
+    public ResponseEntity<TileResponse> updateTile(@PathVariable Long tileId,
+                                                   @RequestParam(required = false) String collectionType,
+                                                   @RequestParam(required = false) String groupType,
+                                                   @RequestParam(required = false) BigDecimal price,
+                                                   @RequestParam(required = false) String color,
+                                                   @RequestParam(required = false) String size,
+                                                   @RequestParam(required = false) String finishingType,
+                                                   @RequestParam(required = false) MultipartFile photo ) throws IOException, SQLException {
+        byte[] photoBytes = photo != null && !photo.isEmpty()?
+                photo.getBytes() : tileService.getTilePhotoByTileId(tileId);
+        Blob photoBlob = photoBytes != null && photoBytes.length > 0 ? new SerialBlob(photoBytes) : null;
+        Tile theTile = tileService.updateTile(tileId, collectionType, groupType, price, color, size, finishingType, photoBytes);
+        theTile.setPhoto(photoBlob);
+        TileResponse tileResponse = getTileResponse(theTile);
+        return ResponseEntity.ok(tileResponse);
+    }
+
+    @GetMapping("/tile/{tileId}")
+    public  ResponseEntity<Optional<TileResponse>> getTileBYId(@PathVariable Long tileId){
+        Optional<Tile> theTile = tileService.getTileById(tileId);
+        return theTile.map(tile -> {
+            TileResponse tileResponse = getTileResponse(tile);
+            return ResponseEntity.ok(Optional.of(tileResponse));
+        }).orElseThrow(() -> new ResourceNotFoundException("Room not found"));
+    }
     private TileResponse getTileResponse(Tile tile) {
         List<BookedTile> bookings = getAllBookingsByTileId(tile.getId());
 

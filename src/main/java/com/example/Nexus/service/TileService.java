@@ -1,5 +1,6 @@
 package com.example.Nexus.service;
 
+import com.example.Nexus.exception.InternalServerException;
 import com.example.Nexus.exception.ResourceNotFoundException;
 import com.example.Nexus.model.Tile;
 import com.example.Nexus.repository.TileRepository;
@@ -64,6 +65,42 @@ public class TileService implements ITileService{
             return photoBlob.getBytes(1, (int) photoBlob.length());
         }
         return null;
+    }
+
+    @Override
+    public void deleteTile(Long tileId) {
+        Optional<Tile> theTile = tileRepository.findById(tileId);
+        if (theTile.isPresent()){
+            tileRepository.deleteById(tileId);
+        }
+    }
+
+    @Override
+    public Tile updateTile(Long tileId, String collectionType,
+                           String groupType, BigDecimal price, String color,
+                           String size, String finishingType, byte[] photoBytes) {
+        Tile tile = tileRepository.findById(tileId)
+                .orElseThrow(() -> new ResourceNotFoundException("Tile not Found"));
+        if (collectionType != null) tile.setCollectionType(collectionType);
+        if (groupType != null) tile.setGroupType(groupType);
+        if (price != null) tile.setPrice(price);
+        if (color != null) tile.setColor(color);
+        if (size != null) tile.setSize(size);
+        if (finishingType != null) tile.setFinishingType(finishingType);
+        if (photoBytes != null && photoBytes.length > 0){
+            try{
+                tile.setPhoto(new SerialBlob(photoBytes));
+            }
+            catch(SQLException ex){
+                throw new InternalServerException("Error Updating Tile");
+            }
+        }
+        return tileRepository.save(tile);
+    }
+
+    @Override
+    public Optional<Tile> getTileById(Long tileId) {
+        return Optional.of(tileRepository.findById(tileId).get());
     }
 
 

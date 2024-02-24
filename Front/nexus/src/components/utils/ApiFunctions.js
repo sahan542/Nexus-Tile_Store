@@ -58,3 +58,41 @@ export async function getAllTiles(){
 
     }
 }
+
+/*This function deletes tiles by tileID from database */
+export async function deleteTile(tileId){
+    try{
+        const result = await api.delete(`/tiles/delete/tile/${tileId}`)
+        return result.data
+    }
+    catch(error){
+        throw new Error(`Error Deleting Tile Design ${error.message}`)
+    }
+}
+
+//This function uses to update Tile Information
+export async function updateTile(tileId, tileData){
+    const formData = new FormData()
+    formData.append("collectionType", tileData.collectionType)
+    formData.append("groupType", tileData.groupType)
+    formData.append("price", tileData.price)
+    formData.append("color", tileData.color)
+    formData.append("size", tileData.size)
+    formData.append("finishingType", tileData.finishingType)
+    formData.append("photo", tileData.photo)
+
+    const response = await api.put(`/tiles/update/${tileId}`, formData)
+    return response
+}
+
+//This function can get a Tile design by Its ID
+export async function getTileById(tileId){
+    try{
+        const result = await api.get(`/tiles/tile/${tileId}`)
+        return result.data
+    }
+    catch(error){
+        throw new Error(`Error Fetching tile ${error.message}`)
+
+    }
+}
