@@ -9,6 +9,7 @@ import EditTile from './components/tile/EditTile.jsx'
 import Footer from './components/layout/Footer.jsx'
 import NavBar from './components/layout/NavBar.jsx'
 import TileListing from './components/tile/TileListing.jsx'
+import Admin from './components/admin/Admin.jsx'
 
 
 
@@ -25,6 +26,7 @@ function App() {
               <Route  path="/add-tiles" element={<AddTile/>} />
               <Route  path="/existing-tiles" element={<ExistingTiles/>} />
               <Route  path="/browse-all-tiles" element={<TileListing/>} />
+              <Route  path="/admin" element={<Admin/>} />
             </Routes>
         </Router>
         <Footer/>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-bootstrap'
+import { NavLink } from "react-router-dom"
 import {Link} from "react-router-dom"
 
 const NavBar = () => {
@@ -7,7 +7,7 @@ const NavBar = () => {
 <nav className="navbar navbar-expand-lg bg-body-tertiary px-5 shadow mt-5 sticky-top">
 			<div className="container-fluid">
 				<Link to={"/"} className="navbar-brand">
-					<span className="hotel-color">lakeSide Hotel</span>
+					<span className="hotel-color">Nexus Tiles</span>
 				</Link>
 
 				<button
@@ -24,8 +24,8 @@ const NavBar = () => {
 				<div className="collapse navbar-collapse" id="navbarScroll">
 					<ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
 						<li className="nav-item">
-							<NavLink className="nav-link" aria-current="page" to={"/browse-all-rooms"}>
-								Browse all rooms
+							<NavLink to={"/browse-all-tiles"} className="nav-link" aria-current="page" >
+								Browse all Tiles
 							</NavLink>
 						</li>
 
