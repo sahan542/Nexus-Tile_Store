@@ -28,6 +28,11 @@ const NavBar = () => {
 								Browse all Tiles
 							</NavLink>
 						</li>
+						<li className="nav-item">
+							<NavLink to={"/admin"} className="nav-link" aria-current="page" >
+								Admin
+							</NavLink>
+						</li>
 
 						
 					</ul>
