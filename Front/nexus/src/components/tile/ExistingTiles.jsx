@@ -116,8 +116,8 @@ const ExistingTiles = () => {
 					</Col>
 
 					<Col md={6} className="d-flex justify-content-end">
-						<Link to={"/add-room"}>
-							<FaPlus /> Add Room
+						<Link to={"/add-tiles"}>
+							<FaPlus /> Add Tile
 						</Link>
 					</Col>
 				</Row>

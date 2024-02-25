@@ -188,7 +188,6 @@ const AddTile = () => {
             </div>
         </div>
     </section>
-        <ExistingTiles />
       
     </>
   )
