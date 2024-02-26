@@ -97,12 +97,57 @@ export async function getTileById(tileId){
     }
 }
 
-
-export async function bookRoom(tileId, booking){
+//this function saves a new booking to database
+export async function bookTile(tileId, booking){
     try{
-        con
+        const response = await api.post(`/bookings/tile/${tileId}/booking`, booking)
+        return response.data
     }
     catch(error){
+        if(error.response && error.response.data){
+            throw new Error(error.response.data)
+        }
+        else{
+            throw new Error(`Error Booking Tile : ${error.message}`)
+        }
 
+    }
+}
+
+//get all bookings from database
+export async function getAllBookings(){
+    try{
+        const result = await api.get("/bookings/all-bookings")
+        return result.data
+    }
+    catch(error){
+        throw new Error(`Error Fetching Bookings : ${error.message}`)
+    }
+}
+
+//get a booking by confirmation code
+export async function getBookingByConfirmationCode(confirmationCode){
+    try{
+        const result = await api.get(`/bookings/confirmation/${confirmationCode}`)
+        return result.data
+    }
+    catch(error){
+        if(error.response && error.response.data){
+            throw new Error(error.response.data)
+        }
+        else{
+            throw new Error(`Error find booking : ${error.message}`)
+        }
+    }
+}
+
+//this function use to cancel booking
+export async function cancelBooking(){
+    try{
+        const result = await api.delete(`/bookings/booking/${bookingId}/delete`)
+        return result.data
+    }
+    catch(error){
+        throw new Error(`Error Cancelling booking : ${error.message}`)
     }
 }
