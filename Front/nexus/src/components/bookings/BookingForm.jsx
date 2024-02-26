@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { bookTile, getTileById } from '../utils/ApiFunctions'
 import { useNavigate, useParams } from 'react-router-dom';
+import { Form, FormControl } from 'react-bootstrap';
+import BookingSummary from './BookingSummary';
 
 const BookingForm = () => {
     const[isValidated, setIsValidated] = useState(false)
@@ -81,7 +83,95 @@ const BookingForm = () => {
     }
 
   return (
-    <div>BookingForm</div>
+    <>
+    <div className='container mb-5'>
+            <div className="row">
+                <div className='col-md-6'>
+                    <div className="card card-body mt-5">
+                        <h4 className="card card-title">Reserve Tile Design</h4>
+                        <Form noValidate validated={isValidated} onSubmit={handleSubmit}>
+                            <Form.Group>
+                                <Form.Label htmlFor="cusName">Full Name :</Form.Label>
+                            <FormControl required type="text" id="cusName" name="cusName" value={booking.cusName} placeholder="Enter your full name" onChange={handleInputChange}/>
+                            <Form.Control.Feedback type="invalid">
+                                    Please Enter your Full Name
+                            </Form.Control.Feedback>
+                            </Form.Group>
+
+
+                            <Form.Group>
+                                <Form.Label htmlFor="cusEmail">Email Address :</Form.Label>
+                            <FormControl required type="text" id="cusEmail" name="cusEmail" value={booking.cusEmail} placeholder="Enter your your Email Address" onChange={handleInputChange}/>
+                            <Form.Control.Feedback type="invalid">
+                                    Please Enter your Email Address
+                            </Form.Control.Feedback>
+                            </Form.Group>
+
+                            <fieldset style={{border: "2px"}}>
+                                <legend>Lodging Period</legend>
+                                <div className="row">
+                                    <div className="col-6">
+
+                                    <Form.Label htmlFor="bookingDate">Full Name :</Form.Label>
+                            <FormControl required type="date" id="bookingDate" name="bookingDate" value={booking.bookingDate} placeholder="Booking Date" onChange={handleInputChange}/>
+                            <Form.Control.Feedback type="invalid">
+                                    Select a booking Date 
+                            </Form.Control.Feedback>
+
+
+                                    </div>
+                                </div>
+                            </fieldset>
+
+
+                            <Form.Group>
+                                <Form.Label htmlFor="cusAddress">Address :</Form.Label>
+                            <FormControl required type="text" id="cusAddress" name="cusAddress" value={booking.cusAddress} placeholder="Enter your Address" onChange={handleInputChange}/>
+                            <Form.Control.Feedback type="invalid">
+                                    Please Enter your Address
+                            </Form.Control.Feedback>
+                            </Form.Group>
+
+
+                            <Form.Group>
+                                <Form.Label htmlFor="cusPhone">Full Name :</Form.Label>
+                            <FormControl required type="text" id="cusPhone" name="cusPhone" value={booking.cusPhone} placeholder="Enter your phone Number" onChange={handleInputChange}/>
+                            <Form.Control.Feedback type="invalid">
+                                    Please Enter your Phone Number
+                            </Form.Control.Feedback>
+                            </Form.Group>
+
+
+                            <Form.Group>
+                                <Form.Label htmlFor="cusName">Full Name :</Form.Label>
+                            <FormControl required type="text" id="cusName" name="cusName" value={booking.cusName} placeholder="Enter your full name" onChange={handleInputChange}/>
+                            <Form.Control.Feedback type="invalid">
+                                    Please Enter your Full Name
+                            </Form.Control.Feedback>
+                            </Form.Group>
+
+                            <div className="form-group mt-2 mb-2">
+                                <button className="btn btn-hotel" type="submit">
+                                    Continue
+                                </button>
+                            </div>
+
+                            
+
+                        </Form>
+                    </div>
+
+                </div>
+                <div className="col-md-6">
+                    {isSubmitted && (
+                        <BookingSummary booking={booking} payment={calculatePayment} isFormValid={isValidated} onConfirm={handleBooking}/>
+                    )}
+                </div>
+            </div>
+    </div>
+    
+    </>
+
   )
 }
 
