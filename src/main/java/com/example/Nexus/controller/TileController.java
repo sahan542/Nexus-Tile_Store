@@ -6,9 +6,8 @@ import com.example.Nexus.model.BookedTile;
 import com.example.Nexus.model.Tile;
 import com.example.Nexus.response.BookingResponse;
 import com.example.Nexus.response.TileResponse;
-import com.example.Nexus.service.BookedTileService;
+import com.example.Nexus.service.BookingService;
 import com.example.Nexus.service.ITileService;
-import com.example.Nexus.service.TileService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpStatus;
@@ -32,7 +31,7 @@ import java.util.Optional;
 public class TileController {
 
     private final ITileService tileService;
-    private final BookedTileService bookedTileService;
+    private final BookingService bookedTileService;
 
     @PostMapping("/add/new-tile")
     public ResponseEntity<TileResponse> addNewTile(@RequestParam("photo") MultipartFile photo,

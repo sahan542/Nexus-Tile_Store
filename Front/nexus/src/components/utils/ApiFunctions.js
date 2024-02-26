@@ -96,3 +96,13 @@ export async function getTileById(tileId){
 
     }
 }
+
+
+export async function bookRoom(tileId, booking){
+    try{
+        con
+    }
+    catch(error){
+
+    }
+}
