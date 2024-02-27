@@ -10,6 +10,10 @@ import Footer from './components/layout/Footer.jsx'
 import NavBar from './components/layout/NavBar.jsx'
 import TileListing from './components/tile/TileListing.jsx'
 import Admin from './components/admin/Admin.jsx'
+import Checkout from './components/bookings/Checkout.jsx'
+import BookingForm from './components/bookings/BookingForm.jsx'
+import BookingSuccess from './components/bookings/BookingSuccess.jsx'
+
 
 
 
@@ -26,7 +30,10 @@ function App() {
               <Route  path="/add-tiles" element={<AddTile/>} />
               <Route  path="/existing-tiles" element={<ExistingTiles/>} />
               <Route  path="/browse-all-tiles" element={<TileListing/>} />
+              <Route  path="/book-tile/:tileId" element={<BookingForm/>} />
               <Route  path="/admin" element={<Admin/>} />
+              <Route  path="/booking-success" element={<BookingSuccess/>} />
+        
             </Routes>
         </Router>
         <Footer/>

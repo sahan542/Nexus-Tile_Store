@@ -83,6 +83,7 @@ public class BookingController {
                                     booking.getCusName(),
                                     booking.getCusEmail(),
                                     booking.getCusAddress(),
-                                    booking.getCusPhone(), booking.getBookingConfirmationCode(), tile);
+                                    booking.getCusPhone(),
+                                    booking.getBookingConfirmationCode(), tile);
     }
 }
