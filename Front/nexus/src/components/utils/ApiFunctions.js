@@ -98,6 +98,7 @@ export async function getTileById(tileId){
 }
 
 //this function saves a new booking to database
+/*
 export async function bookTile(tileId, booking){
     try{
         const response = await api.post(`/bookings/tile/${tileId}/booking`, booking)
@@ -111,6 +112,19 @@ export async function bookTile(tileId, booking){
             throw new Error(`Error Booking Tile : ${error.message}`)
         }
 
+    }
+}
+*/
+export async function bookTile(tileId, booking, api) {
+    try {
+        const response = await api.post(`/bookings/tile/${tileId}/booking`, booking);
+        return response.data;
+    } catch (error) {
+        if (error.response && error.response.data) {
+            throw error; // Throw the entire error object
+        } else {
+            throw new Error(`Error Booking Tile: ${error.message}`);
+        }
     }
 }
 

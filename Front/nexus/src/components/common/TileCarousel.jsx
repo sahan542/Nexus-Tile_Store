@@ -52,10 +52,10 @@ const TileCarousel = () => {
                                         <Card.Body>
                                             <Card.Title className="hotel-color">{tile.collectionType}</Card.Title>
                                             <Card.Title className="hotel-color">{tile.groupType}</Card.Title>
-                                            <Card.Title className="tile-price">${tile.price}</Card.Title>
-                                            <Card.Title className="tile-color">${tile.color}</Card.Title>
-                                            <Card.Title className="tile-size">${tile.size}</Card.Title>
-                                            <Card.Title className="tile-finishingType">${tile.finishingType}</Card.Title>
+                                            <Card.Title className="tile-price">{tile.price}</Card.Title>
+                                            <Card.Title className="tile-color">{tile.color}</Card.Title>
+                                            <Card.Title className="tile-size">{tile.size}</Card.Title>
+                                            <Card.Title className="tile-finishingType">{tile.finishingType}</Card.Title>
                                             <div className="flex-shrink-0">
                                                 <Link className="btn btn-sm btn-hotel" to={`/book-tile/${tile.id}`}>
                                                     Book Now

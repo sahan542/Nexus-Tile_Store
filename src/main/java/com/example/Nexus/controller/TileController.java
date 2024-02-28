@@ -111,11 +111,18 @@ public class TileController {
             bookings = new ArrayList<>();
         }
 
-        List<BookingResponse> bookingInfo = bookings.stream()
+        List<BookingResponse> bookingInfo = bookings
+                .stream()
                 .map(booking -> new BookingResponse(booking.getBookingId(),
-                        booking.getBookingDate(),
-                        booking.getBookingConfirmationCode()))
+                                    booking.getBookingConfirmationCode()))
                 .toList();
+/*
+        List<BookingResponse> bookingInfo = bookings
+                .stream()
+                .map(booking -> new BookingResponse(booking.getBookingId(),
+                        booking.getBookingConfirmationCode()) ).toList();
+*/
+
 
         byte[] photoBytes = null;
         if (tile.getPhoto() != null) {

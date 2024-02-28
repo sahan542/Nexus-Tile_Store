@@ -16,8 +16,6 @@ public class BookedTile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
-    @Column(name = "booking_Date")
-    private LocalDate bookingDate;
     @Column(name = "customer_Name")
     private String cusName;
     @Column(name = "customer_Email")

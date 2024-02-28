@@ -12,7 +12,6 @@ import java.time.LocalDate;
 public class BookingResponse {
 
     private Long id;
-    private LocalDate bookingDate;
     private String cusName;
     private String cusEmail;
     private String cusAddress;
@@ -21,9 +20,10 @@ public class BookingResponse {
     private TileResponse tile;
 
 
-    public BookingResponse(Long id, LocalDate bookingDate, String bookingConfirmationCode) {
+    public BookingResponse(Long id, String bookingConfirmationCode) {
         this.id = id;
-        this.bookingDate = bookingDate;
         this.bookingConfirmationCode = bookingConfirmationCode;
     }
+
+
 }

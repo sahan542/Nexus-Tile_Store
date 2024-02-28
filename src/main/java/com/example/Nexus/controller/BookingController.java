@@ -46,7 +46,6 @@ public class BookingController {
     }
 
 
-
     @PostMapping("/tile/{tileId}/booking")
     public ResponseEntity<?> saveBooking(@PathVariable Long tileId,
                                          @RequestBody BookedTile bookingRequest){
@@ -61,6 +60,8 @@ public class BookingController {
         }
 
     }
+
+
 
     @DeleteMapping("/booking/{bookingId}/delete")
     public void cancelBooking(@PathVariable Long bookingId){
@@ -79,7 +80,6 @@ public class BookingController {
 
                 );
         return new BookingResponse(booking.getBookingId(),
-                                    booking.getBookingDate(),
                                     booking.getCusName(),
                                     booking.getCusEmail(),
                                     booking.getCusAddress(),

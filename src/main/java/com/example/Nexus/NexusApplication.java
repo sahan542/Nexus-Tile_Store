@@ -8,7 +8,7 @@ public class NexusApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(NexusApplication.class, args);
-		System.out.println("Hello");
+		System.out.println("Hello Guys!");
 	}
 
 
