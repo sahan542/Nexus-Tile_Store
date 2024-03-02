@@ -3,21 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
 const BookingSummary = ({ booking, payment, isFormValid, onConfirm }) => {
-    const [isBookingConfirmed, setIsBookingConfirmed] = useState(true);
+    const [isBookingConfirmed, setIsBookingConfirmed] = useState(false);
     const [isProcessingPayment, setIsProcessingPayment] = useState(false);
     const navigate = useNavigate();
 
-    const handleConfirmBooking = async () => {
+    const handleConfirmBooking = () => {
         setIsProcessingPayment(true);
-        try {
-            await onConfirm(); // Assuming onConfirm handles booking submission
-            setIsBookingConfirmed(true);
-        } catch (error) {
-            console.error("Error confirming booking:", error);
-            // Handle error as needed
-        } finally {
-            setIsProcessingPayment(false);
-        }
+        navigate("/booking-success");
+        setTimeout(() =>{
+            setIsProcessingPayment(false)
+            isBookingConfirmed(true)
+            onConfirm
+        }, 3000)
     };
 
     useEffect(() => {

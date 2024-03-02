@@ -341,6 +341,17 @@ const BookingForm = () => {
         setErrorMessage("");
     };
 
+    const [tileInfo, setTileInfo] = useState({
+        photo: "",
+        collectionType: "",
+        groupType: "",
+        price: "",
+        color: "",
+        size: "",
+        finishingType: ""
+
+    })
+
     const getTilePriceById = async (tileId) => {
         try {
             const response = await getTileById(tileId);
@@ -362,11 +373,13 @@ const BookingForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.currentTarget;
-        if (form.checkValidity() === true) {
-            setIsSubmitted(true);
-            setIsValidated(true);
-            form.classList.add('was-validated'); // Mark form fields as validated
+        if (form.checkValidity() === false) {
+            e.stopPropagation()
         }
+        else{
+            setIsSubmitted(true)
+        }
+        setIsValidated(true)
     };
 
     const handleBooking = async () => {
@@ -378,7 +391,7 @@ const BookingForm = () => {
             // Set the error message directly from the error object
             setErrorMessage(error.message);
             // Use the current state value of errorMessage
-            navigate("/", { state: { error: error.message } });
+            navigate("/", { state: { error: errorMessage } });
         }
     };
 
