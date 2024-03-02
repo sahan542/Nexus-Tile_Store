@@ -1,22 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { bookTile, getTileById } from '../utils/ApiFunctions';
 
-const BookingSummary = ({ booking, payment, isFormValid, onConfirm }) => {
+const BookingSummary = ({ booking, payment, isFormValid, tileId }) => {
     const [isBookingConfirmed, setIsBookingConfirmed] = useState(false);
     const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+    const [confirmationCode, setConfirmationCode] = useState("");
     const navigate = useNavigate();
+    console.log("Booking code: ", tileId);
 
-    const handleConfirmBooking = () => {
-        setIsProcessingPayment(true);
-        navigate("/booking-success");
-        setTimeout(() =>{
-            setIsProcessingPayment(false)
-            isBookingConfirmed(true)
-            onConfirm
-        }, 3000)
+    const handleConfirmBooking = async () => {
+        console.log(booking);
+        console.log(tileId);
+        try {
+            const confirmationCode = await bookTile(tileId, booking);
+            console.log(confirmationCode);
+            setConfirmationCode(confirmationCode);
+            setIsProcessingPayment(true);
+            navigate("/booking-success", { state: { confirmationCode: confirmationCode } });
+        } catch (error) {
+            // Use the current state value of errorMessage
+            navigate("/booking-success", { state: { error: error } });
+            console.log(error)
+        }
+        
     };
 
+    
     useEffect(() => {
         if (isBookingConfirmed) {
             navigate("/booking-success", { state: { message: "Booking confirmed successfully!" } });

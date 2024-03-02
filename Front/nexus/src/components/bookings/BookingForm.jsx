@@ -335,6 +335,8 @@ const BookingForm = () => {
     const { tileId } = useParams();
     const navigate = useNavigate();
 
+    
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setBooking({ ...booking, [name]: value });
@@ -382,18 +384,6 @@ const BookingForm = () => {
         setIsValidated(true)
     };
 
-    const handleBooking = async () => {
-        try {
-            const confirmationCode = await bookTile(tileId, booking);
-            setIsSubmitted(true);
-            navigate("/", { state: { message: confirmationCode } });
-        } catch (error) {
-            // Set the error message directly from the error object
-            setErrorMessage(error.message);
-            // Use the current state value of errorMessage
-            navigate("/", { state: { error: errorMessage } });
-        }
-    };
 
     return (
         <div className='container mb-5'>
@@ -444,7 +434,7 @@ const BookingForm = () => {
                 </div>
                 <div className="col-md-6">
                     {isSubmitted && (
-                        <BookingSummary booking={booking} payment={calculatePayment()} isFormValid={isValidated} onConfirm={handleBooking} />
+                        <BookingSummary booking={booking} payment={calculatePayment()} isFormValid={isValidated} tileId={tileId}/>
                     )}
                 </div>
             </div>
@@ -452,4 +442,4 @@ const BookingForm = () => {
     );
 };
 
-export default BookingForm;
+export default BookingForm; 

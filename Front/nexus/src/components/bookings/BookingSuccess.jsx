@@ -6,16 +6,18 @@ const BookingSuccess = ({ confirmationCode }) => {
     const location = useLocation();
     const message = location.state?.message;
     const error = location.state?.error;
+    confirmationCode = location.state?.confirmationCode;
+    console.log(confirmationCode);
 
     return (
         <div className='container'>
             <Header title="Booking Success"/>
             <div className='mt-5'>
-                {message ? (
+                {confirmationCode ? (
                     <div>
                         <h3 className='text-success'>Booking Success!</h3>
                         <p>Your confirmation code is: {confirmationCode}</p>
-                        <p className='text-success'>{message}</p>
+                        <p className='text-success'></p>
                     </div>
                 ) : (
                     <div>

@@ -51,7 +51,7 @@ public class BookingController {
                                          @RequestBody BookedTile bookingRequest){
         try{
             String confirmationCode = bookingService.saveBooking(tileId, bookingRequest);
-            return ResponseEntity.ok("Tile Booked Successfully! your booking confirmation code is : "+confirmationCode);
+            return ResponseEntity.ok(confirmationCode);
 
         }
         catch(InvalidBookingRequestException e){

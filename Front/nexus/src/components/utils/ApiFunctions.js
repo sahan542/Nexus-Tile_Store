@@ -115,7 +115,7 @@ export async function bookTile(tileId, booking){
     }
 }
 */
-export async function bookTile(tileId, booking, api) {
+export async function bookTile(tileId, booking) {
     try {
         const response = await api.post(`/bookings/tile/${tileId}/booking`, booking);
         return response.data;
