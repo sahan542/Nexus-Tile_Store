@@ -58,7 +58,7 @@ const TileCarousel = () => {
                                             <Card.Title className="tile-finishingType">{tile.finishingType}</Card.Title>
                                             <div className="flex-shrink-0">
                                                 <Link className="btn btn-sm btn-hotel" to={`/book-tile/${tile.id}`}>
-                                                    Book Now
+                                                    Order Now
                                                 </Link>
 
                                             </div>

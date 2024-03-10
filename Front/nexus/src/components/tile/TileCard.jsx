@@ -29,7 +29,7 @@ const TileCard = ({tile}) => {
 
                 </div>
                 <div className="flex-shrink-0 mt-3">
-                    <Link to={`book-tile/${tile.id}`} className="btn btn-hotel btn-sm">
+                    <Link to={`http://localhost:5173/book-tile/${tile.id}`} className="btn btn-hotel btn-sm">
                         Book Now
                     </Link>
                 </div>
