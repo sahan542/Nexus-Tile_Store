@@ -30,7 +30,7 @@ function App() {
               <Route  path="/add-tiles" element={<AddTile/>} />
               <Route  path="/existing-tiles" element={<ExistingTiles/>} />
               <Route  path="/browse-all-tiles" element={<TileListing/>} />
-              <Route  path="/book-tile/:tileId" element={<BookingForm/>} />
+              <Route  path="/book-tile/:tileId" element={<Checkout/>} />
               <Route  path="/admin" element={<Admin/>} />
               <Route  path="/booking-success" element={<BookingSuccess/>} />
         
