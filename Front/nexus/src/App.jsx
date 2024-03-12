@@ -14,6 +14,7 @@ import Checkout from './components/bookings/Checkout.jsx'
 import BookingForm from './components/bookings/BookingForm.jsx'
 import BookingSuccess from './components/bookings/BookingSuccess.jsx'
 import Bookings from './components/bookings/Bookings.jsx'
+import FindBooking from './components/bookings/FindBooking.jsx'
 
 
 
@@ -35,6 +36,7 @@ function App() {
               <Route  path="/admin" element={<Admin/>} />
               <Route  path="/booking-success" element={<BookingSuccess/>} />
               <Route  path="/existing-bookings" element={<Bookings/>} />
+              <Route  path="/find-booking" element={<FindBooking/>} />
         
             </Routes>
         </Router>
