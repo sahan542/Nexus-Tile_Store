@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 const BookingsTable = () => {
     const[bookingInfo, setBookingInfo] = useState([{
         id: "",
+        tile: {id:"", collectionType:"", groupType:""},
         cusName: "",
         cusEmail: "",
         cusAddress: "",
@@ -15,6 +16,7 @@ const BookingsTable = () => {
     }])
     const[filteredBookings, setFilteredBookings] = useState([{
         id: "",
+        tile: {id:"", collectionType:"", groupType:""},
         cusName: "",
         cusEmail: "",
         cusAddress: "",
@@ -103,6 +105,8 @@ const BookingsTable = () => {
                         <th>S/N</th>
                         <th>Booking_ID</th>
                         <th>Tile_ID</th>
+                        <th>Collection_TYpe</th>
+                        <th>Group_Type</th>
                         <th>Cus_Name</th>
                         <th>Cus_Email</th>
                         <th>Cus_Address</th>
@@ -112,11 +116,13 @@ const BookingsTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {currentBookings.map((booking)=>(
+                    {currentBookings.map((booking, index)=>(
                         <tr key={booking.id} className='text-center'>
-                            <td>{booking.tile.id}</td>
+                            <td>{index + 1}</td>
                             <td>{booking.id}</td>
                             <td>{booking.tile.id}</td>
+                            <td>{booking.tile.collectionType}</td>
+                            <td>{booking.tile.groupType}</td>
                             <td>{booking.cusName}</td>
                             <td>{booking.cusEmail}</td>
                             <td>{booking.cusAddress}</td>

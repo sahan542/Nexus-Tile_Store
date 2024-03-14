@@ -8,5 +8,5 @@ import java.util.List;
 public interface BookingRepository extends JpaRepository<BookedTile, Long> {
     List<BookedTile> findByTileId(Long tileId);
 
-    BookedTile findByBookingConfirmationCode(String confirmationCode);
+     BookedTile findByBookingConfirmationCode(String confirmationCode);
 }

@@ -3,11 +3,12 @@ import { cancelBooking, getBookingByConfirmationCode } from '../utils/ApiFunctio
 
 const FindBooking = () => {
     const[confirmationCode, setConfirmationCode] = useState("")
-    const[error, setError] = useState("")
+    const[error, setError] = useState(null)
+    const[successMessage, setSuccessMessage] = useState("")
     const[isLoading, setIsLoading] = useState(false)
     const[bookingInfo, setBookingInfo] = useState({
         id:"",
-        tile: {id:""},
+        tile: {id:"", collectionType:"", groupType:""},
         bookingConfirmationCode: "",
         tileId: "",
         cusName: "",
@@ -20,7 +21,7 @@ const FindBooking = () => {
 
     const clearBookingInfo = {
         id:"",
-        tile: {id:""},
+        tile: {id:"", collectionType:"", groupType:""},
         bookingConfirmationCode: "",
         tileId: "",
         cusName: "",
@@ -61,6 +62,7 @@ const FindBooking = () => {
         try{
             await cancelBooking(bookingInfo.id)
             setIsDeleted(true)
+            setSuccessMessage("Booking has been cancelled successfully !")
             setBookingInfo(clearBookingInfo)
             setConfirmationCode("")
             setError("")
@@ -70,6 +72,10 @@ const FindBooking = () => {
 
 
         }
+        setTimeout(() =>{
+            setSuccessMessage("")
+            setIsDeleted(false)
+        }, 2000)
 
     }
   return (
@@ -97,6 +103,8 @@ const FindBooking = () => {
                     <p>Booking ConfirmationCode : {bookingInfo.bookingConfirmationCode}</p>
                     <p>Booking ID : {bookingInfo.id} </p>
                     <p>Tile ID : {bookingInfo.tile.id} </p>
+                    <p>Collection Type : {bookingInfo.tile.collectionType} </p>
+                    <p>Group Type : {bookingInfo.tile.groupType} </p>
                     <p>Customer Name : {bookingInfo.cusName} </p>
                     <p>Customer Email : {bookingInfo.cusEmail} </p>
                     <p>Customer Address : {bookingInfo.cusAddress} </p>
@@ -117,7 +125,9 @@ const FindBooking = () => {
             )}
 
             {isDeleted && (
-                <div className="alert alert-success mt-3" role="alert"> Booking has benn cancelled succcessfully!</div>
+                <div className="alert alert-success mt-3" role="alert">
+                    {successMessage}
+                </div>
             )}
 
         </div>
