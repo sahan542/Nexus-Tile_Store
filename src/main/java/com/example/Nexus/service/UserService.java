@@ -28,6 +28,7 @@ public class UserService implements IUserService{
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Role userRole = roleRepository.findByName("ROLE_USER").get();
         user.setRoles(Collections.singletonList(userRole));
+      //  user.setRoles(Collections.singletonList(userRole));
         return userRepository.save(user);
     }
 
@@ -39,7 +40,11 @@ public class UserService implements IUserService{
     @Transactional
     @Override
     public void deleteUser(String email) {
-        userRepository.deleteByEmail(email);
+        User theUser = getUser(email);
+        if(theUser != null){
+            userRepository.deleteByEmail(email);
+        }
+
 
     }
 
