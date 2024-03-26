@@ -8,11 +8,12 @@ import com.example.Nexus.repository.RoleRepository;
 import com.example.Nexus.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-
+@Service
 @RequiredArgsConstructor
 public class RoleService implements IRoleService {
 
@@ -74,7 +75,8 @@ public class RoleService implements IRoleService {
 
     @Override
     public Role removeAllUsersFromRole(Long roleId) {
-        Opp
-        return null;
+        Optional<Role> role = roleRepository.findById(roleId);
+        role.get().removeAllUsersFromRole();
+        return roleRepository.save(role.get());
     }
 }
