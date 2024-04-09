@@ -4,6 +4,14 @@ export const api = axios.create({
 	baseURL: "http://localhost:8092"
 })
 
+export const getHeader = () => {
+    const token = localStorage.getItem("token")
+    return{
+        Authorization : `Bearer ${token}`,
+        "Content-Type" : "application/json"
+    }
+}
+
 //This function add new tiles to he database
 export async function addTile(photo, collectionType, groupType, price, color, size, finishingType){
     const formData = new FormData()
@@ -156,7 +164,7 @@ export async function getBookingByConfirmationCode(confirmationCode){
 }
 
 //this function use to cancel booking
-export async function cancelBooking(){
+export async function cancelBooking(bookingId){
     try{
         const result = await api.delete(`/bookings/booking/${bookingId}/delete`)
         return result.data
@@ -165,3 +173,53 @@ export async function cancelBooking(){
         throw new Error(`Error Cancelling booking : ${error.message}`)
     }
 }
+
+export async function registration(registration){
+    try{
+        const response = await api.post("/auth/register-user", registration)
+        return response.data
+
+    }
+    catch(error){
+        if(error.response && error.response.data){
+            throw new Error(error.response.data)
+        }
+        else{
+            throw new Error(`User Registration Error : ${error.message}`)
+        }
+
+    }
+}
+
+export async function login(login){
+    try{
+        const response = await api.post("/auth/login",login)
+        if(response.status >= 200 && response.status < 300){
+            return response.data
+        }
+        else{{
+            return null
+        }}
+
+
+    }
+    catch(error){
+        console.error(error)
+        return null
+    }
+}
+
+// Export the getUserProfile function
+export async function getUserProfile(userId, token){
+    try{
+        const response = await api.get(`users/profile/${userId}`, {
+            headers: getHeader(token)
+        });
+        return response.data;
+    }
+    catch(error){
+        throw error
+    }
+
+}
+

@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -34,6 +35,7 @@ public class TileController {
     private final BookingService bookedTileService;
 
     @PostMapping("/add/new-tile")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<TileResponse> addNewTile(@RequestParam("photo") MultipartFile photo,
                                                    @RequestParam("collectionType") String collectionType,
                                                    @RequestParam("groupType") String groupType,
