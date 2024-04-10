@@ -218,7 +218,7 @@ export async function getUserProfile(userId, token){
         return response.data;
     }
     catch(error){
-        throw error
+        throw new Error(`User Login Error : ${error.message}`)
     }
 
 }
