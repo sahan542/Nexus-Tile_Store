@@ -223,3 +223,44 @@ export async function getUserProfile(userId, token){
 
 }
 
+export async function deleteUser(userId){
+    try{
+        const response = await api.delete(`/users/delete/${userId}`, {
+            headers : getHeader()
+        })
+        return response.data
+
+    }
+    catch(error){
+        return error.message
+
+    }
+}
+
+/*this is used to get a single user */
+export async function getUser(userId, token){
+    try{
+        const response = await api.get(`/users/${userId}`, {
+            headers: getHeader()
+        })
+        return response.data
+    }
+    catch(error){
+        throw new Error(`User getting single users : ${error.message}`)
+    }
+}
+
+/* This is the function to get user bookings by the user id*/
+export async function getBookingsByUserrId(userId, token){
+    try{
+        const response = await api.get(`/bookings/user/${userId}/bookings`, {
+            headers: getHeader()
+        })
+        return response.data
+    }
+    catch(error){
+        console.error("Error Fetching bookings:", error.message)
+        throw new Error("Failed to fetch bookings")
+    }
+}
+

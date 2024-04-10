@@ -43,7 +43,7 @@ const Registration = () => {
         {successMessage && <p className='alert alert-success'>{successMessage}</p>}
 
         <h2>Register</h2>
-        <form>
+        <form onSubmit={handleRegistration}>
         <div className='row mb-3'>
                 <label htmlFor='firstName' className='col-sm-2 col-form-label'>Email</label>
                 <div>
