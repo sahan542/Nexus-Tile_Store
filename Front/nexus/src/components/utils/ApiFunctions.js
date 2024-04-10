@@ -174,7 +174,7 @@ export async function cancelBooking(bookingId){
     }
 }
 
-export async function registration(registration){
+export async function registerUser(registration){
     try{
         const response = await api.post("/auth/register-user", registration)
         return response.data
