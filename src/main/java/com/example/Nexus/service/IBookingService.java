@@ -12,4 +12,6 @@ public interface IBookingService {
     BookedTile findByBookingConfirmationCode(String confirmationCode);
 
     List<BookedTile> getAllBookings();
+
+    List<BookedTile> getBookingsByUserEmail(String email);
 }

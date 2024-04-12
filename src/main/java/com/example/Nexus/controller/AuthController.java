@@ -33,7 +33,7 @@ public class AuthController {
     private final JwtUtils jwtUtils;
 
     @PostMapping("/register-user")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody User user) {
+    public ResponseEntity<?> registerUser(@RequestBody User user) {
         try {
             userService.registerUser(user);
             return ResponseEntity.ok("Registration-Successfully!");

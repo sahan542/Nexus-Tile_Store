@@ -25,6 +25,11 @@ public class BookingService implements IBookingService{
     }
 
     @Override
+    public List<BookedTile> getBookingsByUserEmail(String email) {
+        return bookingRepository.findByCusEmail(email);
+    }
+
+    @Override
     public void cancelBooking(Long bookingId) {
         bookingRepository.deleteById(bookingId);
     }

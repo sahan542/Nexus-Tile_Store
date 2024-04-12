@@ -323,9 +323,10 @@ const BookingForm = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [tilePrice, setTilePrice] = useState(0);
+    const currentUser = localStorage.getItem("userId")
     const [booking, setBooking] = useState({
         cusName: "",
-        cusEmail: "",
+        cusEmail: currentUser,
         bookingDate: "",
         cusAddress: "",
         cusPhone: "",

@@ -15,6 +15,12 @@ import BookingForm from './components/bookings/BookingForm.jsx'
 import BookingSuccess from './components/bookings/BookingSuccess.jsx'
 import Bookings from './components/bookings/Bookings.jsx'
 import FindBooking from './components/bookings/FindBooking.jsx'
+import Login from './components/auth/Login.jsx'
+import Registration from './components/auth/Registration';
+import Profile from './components/auth/Profile.jsx'
+import Logout from './components/auth/Logout.jsx'
+import AuthProvider from './components/auth/AuthProvider.jsx'
+import RequireAuth from './components/auth/RequireAuth.jsx'
 
 
 
@@ -22,7 +28,7 @@ import FindBooking from './components/bookings/FindBooking.jsx'
 function App() {
 
   return (
-    <>
+    <AuthProvider>
       <main>
         <Router>
           <NavBar/>
@@ -32,18 +38,26 @@ function App() {
               <Route  path="/add-tiles" element={<AddTile/>} />
               <Route  path="/existing-tiles" element={<ExistingTiles/>} />
               <Route  path="/browse-all-tiles" element={<TileListing/>} />
-              <Route  path="/book-tile/:tileId" element={<Checkout/>} />
+              <Route  path="/book-tile/:tileId" element={
+                <RequireAuth>
+                       <Checkout/>
+                </RequireAuth>
+                                 } />
               <Route  path="/admin" element={<Admin/>} />
               <Route  path="/booking-success" element={<BookingSuccess/>} />
               <Route  path="/existing-bookings" element={<Bookings/>} />
               <Route  path="/find-booking" element={<FindBooking/>} />
+              <Route  path="/login" element={<Login/>} />
+              <Route  path="/register" element={<Registration/>} />
+              <Route  path="/profile" element={<Profile/>} />
+              <Route  path="/logout" element={<Logout/>} />
         
             </Routes>
         </Router>
         <Footer/>
 
       </main>
-    </>
+    </AuthProvider>
   )
 }
 

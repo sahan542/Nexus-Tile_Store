@@ -9,4 +9,6 @@ public interface BookingRepository extends JpaRepository<BookedTile, Long> {
     List<BookedTile> findByTileId(Long tileId);
 
      BookedTile findByBookingConfirmationCode(String confirmationCode);
+
+    List<BookedTile> findByCusEmail(String email);
 }

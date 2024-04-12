@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { JwtDecodeOptions, jwtDecode } from './../../../node_modules/jwt-decode/build/cjs/index.d';
+import AuthProvider, { AuthContext } from './AuthProvider';
 
 const Login = () => {
     const[errorMessage, setErrorMessage] = useState("");
@@ -10,21 +11,20 @@ const Login = () => {
     });
     const navigate = useNavigate()
 
+    const { handleLogin } = useContext(AuthContext)
+
     const handleInputChange = (e) =>{
         setLogin({...login, [e.target.name] : e.target.value})
     }
 
-    const handleLogin = async(e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
         const success = await loginUser(login)
         if(success){
             const token = success.token
-            const decodedToken = jwtDecode(token)
-            localStorage.setItem("token", token)
-            localStorage.setItem("userId", decodedToken.sub)
-            localStorage.setItem("userRole", decodedToken.role.join(","))
+            handleLogin(token)
             navigate("/")
-            window.location.reload()
+            //window.location.reload()
         }
         else{
             setErrorMessage("Invalid username or password. please try again")
@@ -81,7 +81,7 @@ const Login = () => {
 
                 </button>
                 <span style={{marginLeft : "10px"}}>
-                    Dont have an account yet?<Link to={"/register"}></Link>
+                    Dont have an account yet?<Link to={"/register"}>Register</Link>
                 </span>
 
             </div>

@@ -80,6 +80,7 @@ public class TileController {
     }
 
     @PutMapping("/update/{tileId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<TileResponse> updateTile(@PathVariable Long tileId,
                                                    @RequestParam(required = false) String collectionType,
                                                    @RequestParam(required = false) String groupType,

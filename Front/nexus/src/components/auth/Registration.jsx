@@ -113,7 +113,7 @@ const Registration = () => {
 
             </div>
             <div className='mb-3'>
-                <button type='submit' className='btn btn-primary' style={{ marginRight: "10px"}}>
+                <button type='submit' className='btn btn-hotel' style={{ marginRight: "10px"}}>
                     Register
                 </button>
                 <span>
