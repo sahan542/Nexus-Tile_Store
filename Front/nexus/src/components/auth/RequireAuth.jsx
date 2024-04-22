@@ -2,9 +2,9 @@ import React from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 
 const RequireAuth = ({ children }) => {
-    const user = localStorage.getItem("userId")
-    const location = useLocation()
-    if (!user){
+    const userId = localStorage.getItem("userId");
+    const location = useLocation();
+    if (!userId){
         return <Navigate to="/login" state={{ path: location.pathname }}></Navigate>
     }
   return children

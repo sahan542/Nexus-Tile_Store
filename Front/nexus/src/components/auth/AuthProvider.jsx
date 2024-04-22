@@ -1,5 +1,7 @@
-import React, { createContext, useState } from 'react'
-import { jwtDecode } from "jwt-decode";
+import React, { createContext, useState } from 'react';
+import { decode } from 'jwt-decode';
+
+
 
 
 export const AuthContext = createContext({
@@ -33,4 +35,4 @@ export const AuthContext = createContext({
     );
   };
   
-export default AuthProvider
+export default AuthProvider;

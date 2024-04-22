@@ -12,7 +12,7 @@ const NavBar = () => {
 		setShowAccount(!showAccount)
 	}
 
-	const isLoggedIn = user !== null
+	const isLoggedIn = localStorage.getItem("token")
 	const userRole = localStorage.getItem("userRole")
 
 
@@ -42,17 +42,14 @@ const NavBar = () => {
 							</NavLink>
 						</li>
 
-
-						
-
-		{isLoggedIn && userRole === "ROLE_ADMIN" && (
-			<li className="nav-item">
-				<NavLink to={"/admin"} className="nav-link" aria-current="page">
-					Admin
-				</NavLink>
-			</li>
-			
-		)}
+						{isLoggedIn && userRole === "ROLE_ADMIN" && (
+							<li className="nav-item">
+								<NavLink to={"/admin"} className="nav-link" aria-current="page">
+									Admin
+								</NavLink>
+							</li>
+							
+						)}
 
 						
 					</ul>
@@ -66,11 +63,12 @@ const NavBar = () => {
 
 						<li className="nav-item dropdown">
 							<a
-								className="nav-link dropdown-toggle"
+								className={`nav-link dropdown-toggle ${showAccount ? "show" : ""}`}
 								href="#"
 								role="button"
 								data-bs-toggle="dropdown"
 								aria-expanded="false"
+								onClick={handleAccountClick}
 								>
 								{" "}
 								Account
