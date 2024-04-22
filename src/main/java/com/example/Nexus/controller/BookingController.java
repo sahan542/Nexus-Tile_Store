@@ -23,7 +23,7 @@ import java.util.List;
 public class BookingController {
     private final IBookingService bookingService;
     private final ITileService tileService;
-    @GetMapping("all-bookings")
+    @GetMapping("/all-bookings")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<BookingResponse>> getAllBookings(){
         List<BookedTile> bookings = bookingService.getAllBookings();

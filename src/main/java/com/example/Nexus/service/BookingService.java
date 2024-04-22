@@ -51,6 +51,7 @@ public class BookingService implements IBookingService{
 
 
     public List<BookedTile> getAllBookingsByTileId(Long tileId) {
+
         return bookingRepository.findByTileId(tileId);
     }
 
@@ -61,6 +62,7 @@ public class BookingService implements IBookingService{
 
 
     private boolean tileIsAvailable(BookedTile bookingRequest, List<BookedTile> existingBookings) {
+
         return true;
     }
 

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { JwtDecodeOptions, jwtDecode } from './../../../node_modules/jwt-decode/build/cjs/index.d';
+import { jwtDecode } from "jwt-decode";
 import AuthProvider, { AuthContext } from './AuthProvider';
 
 const Login = () => {
