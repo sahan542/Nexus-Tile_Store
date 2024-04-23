@@ -5,6 +5,7 @@ import AuthProvider, { AuthContext } from './AuthProvider';
 
 const Login = () => {
     const[errorMessage, setErrorMessage] = useState("");
+    const[successMessage, setSuccessMessage] = useState("");
     const[login, setLogin] = useState({
         email: "",
         password: ""
@@ -23,6 +24,7 @@ const Login = () => {
         if(success){
             const token = success.token
             handleLogin(token)
+            setSuccessMessage("login successfully");
             navigate("/")
             //window.location.reload()
         }
