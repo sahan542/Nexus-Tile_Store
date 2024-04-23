@@ -5,6 +5,7 @@ import AuthProvider, { AuthContext } from './AuthProvider';
 
 const Login = () => {
     const[errorMessage, setErrorMessage] = useState("");
+    const[successMessage, setSuccessMessage] = useState("");
     const[login, setLogin] = useState({
         email: "",
         password: ""
@@ -19,12 +20,12 @@ const Login = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        const success = await setLogin(login)
+        const success = await loginUser(login)
         if(success){
             const token = success.token
             handleLogin(token)
+            setSuccessMessage("login successfully");
             navigate("/")
-            console.log("login successfully!");
             //window.location.reload()
         }
         else{
@@ -38,11 +39,9 @@ const Login = () => {
 
   return (
     <section className='container col-6 mt-5 mb-5'>
-    
         {errorMessage && <p className='alert alert-danger'>{errorMessage}</p>}
-   
         <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleLogin}>
             <div className='row mb-3'>
                 <label htmlFor='email' className='col-sm-2 col-form-label'>Email</label>
                 <div>

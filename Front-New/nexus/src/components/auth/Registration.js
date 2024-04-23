@@ -19,7 +19,6 @@ const Registration = () => {
 
     const handleRegistration = async(e) => {
         e.preventDefault()
-        console.log(registration)
 
         try{
             const result = await registerUser(registration)
@@ -46,7 +45,7 @@ const Registration = () => {
         <h2>Register</h2>
         <form onSubmit={handleRegistration}>
         <div className='row mb-3'>
-                <label htmlFor='firstName' className='col-sm-2 col-form-label'>First Name</label>
+                <label htmlFor='firstName' className='col-sm-2 col-form-label'>Email</label>
                 <div>
                     <input
                     id='firstName'
@@ -63,7 +62,7 @@ const Registration = () => {
             </div>
 
             <div className='row mb-3'>
-                <label htmlFor='lastName' className='col-sm-2 col-form-label'>Last Name</label>
+                <label htmlFor='lastName' className='col-sm-2 col-form-label'>Email</label>
                 <div>
                     <input
                     id='lastName'

@@ -12,7 +12,7 @@ const NavBar = () => {
 		setShowAccount(!showAccount)
 	}
 
-	const isLoggedIn = user !== null
+	const isLoggedIn = localStorage.getItem("token")
 	const userRole = localStorage.getItem("userRole")
 
 
