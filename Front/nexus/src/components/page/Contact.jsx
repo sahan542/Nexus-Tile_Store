@@ -51,7 +51,7 @@ const Contact = () => {
                     <header className='header-banner'>
                     </header>
                     </Col>
-                    <Col>
+                    <Col className='align-items-center'>
                       <div className="about-box-info">
                         <h3>Address:</h3> 
                         <p>No: 25, Nawala Road, Narahenpita, Colombo 5</p>

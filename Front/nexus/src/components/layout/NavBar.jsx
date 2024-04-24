@@ -41,6 +41,16 @@ const NavBar = () => {
 								Browse all Tiles
 							</NavLink>
 						</li>
+						<li className="nav-item">
+							<NavLink to={"/about-nexus"} className="nav-link" aria-current="page" >
+								About
+							</NavLink>
+						</li>
+						<li className="nav-item">
+							<NavLink to={"/contact"} className="nav-link" aria-current="page" >
+								Contact
+							</NavLink>
+						</li>
 
 						{isLoggedIn && userRole === "ROLE_ADMIN" && (
 							<li className="nav-item">
