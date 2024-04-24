@@ -133,6 +133,7 @@ body {
   padding-right: 150px; /* Increase right padding */
   background-color: white; /* Example background color */
   margin-top: 90px;
+  margin-bottom: 50px;
 }
 .container-about h1{
   color: #8B0000;
@@ -145,6 +146,49 @@ body {
   text-align: center;
   font-weight: 470;
 }
+.about-info{
+  margin-top: 50px;
+  background-color: white;
+}
+.about-box h1{
+  font-size: 60px;
+  font-weight: 700;
+  color: black;
+}
+.about-box{
+  color: white;
+}
+.about-box p{
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+}
+.about-box li{
+  text-align: left;
+  margin-left: 60px;
+}
+.about-box h4{
+  text-align: center;
+ font-size: 25px;
+ color: #adabab;
+
+}
+
+.about-cerificate{
+  background-color: white;
+}
+.about-box h1{
+  font-size: 60px;
+  font-weight: 700;
+  color: black;
+}
+.about-box h4{
+  text-align: right;
+}
+.about-box{
+  color: white;
+}
+
 
 @keyframes bounceIn {
   from, 20%, 40%, 60%, 80%, to {

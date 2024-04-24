@@ -19,7 +19,7 @@ const About = () => {
             <p>Our wall & floor tiles are available in a range of colors, sizes and textures; all of which are made with the highest quality material using state-of the-art technology.While seeking inspiration for our unique collections from Sri Lankan lush natural surroundings.our production process is carried out by taking steps to safeguard our environment and by using green technology.</p>
             <div className="about-info">
                 <Container>
-                  <Row>
+                  <Row className="gx-4 gy-4">
                     <Col>
                       <div className="about-box">
                         <h1>Vision</h1>
@@ -29,19 +29,123 @@ const About = () => {
                     <Col>
                       <div className="about-box">
                         <h1>Mission</h1>
-                        <p>Creating contemporary fashinable lifestyles for our customers while adding value to our stakeholders</p>
+                        <p>Creating contemporary fashinable lifestyles for our customers while adding value to our stakeholders by excelling in evrything we do with the strength of our inherited values.</p>
                       </div>
                     </Col>
                     <Col>
                       <div className="about-box">
-                        <h1>Title 3</h1>
-                        <p>Content for Box 3</p>
+                        <h1>Values</h1>
+                        <p>
+                          <li>Quality</li>
+                          <li>Trust</li>
+                          <li>Sense of Heritage</li>
+                          <li>Long standing Relationships</li>
+                        </p>
                       </div>
                     </Col>
                   </Row>
                 </Container>
             </div>
           </div>
+          <header className='header-banner'>
+          </header>
+
+          <div className="container-about">
+
+            <div className="about-info">
+                <Container>
+                  <Row className="gx-4 gy-4">
+                    <Col>
+                      <div className="about-box">
+                        <h1>650+</h1>
+                        <h4>SKU&aposs</h4>
+                        <p>Creating a fine art of living</p>
+                      </div>
+                    </Col>
+                    <Col>
+                      <div className="about-box">
+                        <h1>56</h1>
+                        <h4>Showrooms</h4>
+                        <p>Visit our nearest showroom.</p>
+                      </div>
+                    </Col>
+                    <Col>
+                      <div className="about-box">
+                        <h1>03</h1>
+                        <h4>Sub Brands</h4>
+                        <p>Catering to your lifestyle needs.</p>
+                        
+                      </div>
+                    </Col>
+                  </Row>
+                </Container>
+            </div>
+            <p className='mt-5'>We deliver a comprehensive tile package that meets our customers requirements.</p>
+            <p className='mt-2 mb-4'>Our high-quality tiles with attractive, unique designs are made in line with international quality standards, conforming to ISO 13006, and exported to countries around the world.Additionally, we have obtained the GREENSL™ Label(GREENSL™STAR) from the Green Building Council of Sri Lanka(GBCSL), which is the local representative of the world Green building council for our entire collection of wall and floor Tiles.</p>
+            <p className='mt-2'></p>
+
+            <div className="about-certifications mt-3">
+                <Container>
+                  <Row className="gx-4 gy-4 mt-3">
+                    <Col>
+                      <div className="about-box">
+                        <h4>Download Nexus Tiles PLC Environmental Policy</h4>
+                      </div>
+                    </Col>
+                    <Col>
+                      <div className="about-box">
+                        <p><a href='google.com' className='text-decoration-none'>Download</a></p>
+                      </div>
+                    </Col>
+              
+                  </Row>
+
+                  <Row className="gx-4 gy-4 mt-3">
+                    <Col>
+                      <div className="about-box">
+                        <h4>Download Nexus Tiles PLC ISO 14001 Certification</h4>
+                      </div>
+                    </Col>
+                    <Col>
+                      <div className="about-box">
+                        <p><a href='google.com' className='text-decoration-none'>Download</a></p>
+                      </div>
+                    </Col>
+              
+                  </Row>
+
+                  <Row className="gx-4 gy-4 mt-3">
+                    <Col>
+                      <div className="about-box">
+                        <h4>Download Nexus Tiles Annual Report 2021/22</h4>
+                      </div>
+                    </Col>
+                    <Col>
+                      <div className="about-box">
+                        <p><a href='google.com' className='text-decoration-none'>Download</a></p>
+                      </div>
+                    </Col>
+              
+                  </Row>
+
+                  <Row className="gx-4 gy-4 mt-3">
+                    <Col>
+                      <div className="about-box">
+                        <h4>Download Nexus Tiles Annual Report 2022/23</h4>
+                      </div>
+                    </Col>
+                    <Col>
+                      <div className="about-box">
+                        <p><a href='google.com' className='text-decoration-none'>Download</a></p>
+                      </div>
+                    </Col>
+              
+                  </Row>
+                </Container>
+            </div>
+          </div>
+          
+          
     </section>
   )
 }
