@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
 import AuthProvider, { AuthContext } from './AuthProvider';
+import { loginUser } from '../utils/ApiFunctions'
+
 
 const Login = () => {
     const[errorMessage, setErrorMessage] = useState("");
@@ -19,12 +21,16 @@ const Login = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        const success = await setLogin(login)
+        const success = await loginUser(login)
         if(success){
             const token = success.token
+            const userRole = success.roles 
+            localStorage.setItem("userRole", userRole)
+
             handleLogin(token)
-            navigate("/")
-            console.log("login successfully!");
+            navigate("/profile")
+        
+           
             //window.location.reload()
         }
         else{
@@ -78,7 +84,7 @@ const Login = () => {
             </div>
 
             <div className='mb-3'>
-                <button type='submit' className='btn btn-hotel' style={{marginRight : "10px"}}>
+                <button onSubmit={handleSubmit} type='submit' className='btn btn-hotel' style={{marginRight : "10px"}}>
                     Login
 
 

@@ -5,6 +5,9 @@ body {
 .card {
   opacity: 0.9;
 }
+.card .card-body label{
+  color: #525252;
+}
 
 /* Navigation bar definitions */
  .navbar{

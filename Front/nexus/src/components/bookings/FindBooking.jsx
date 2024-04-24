@@ -81,11 +81,11 @@ const FindBooking = () => {
   return (
     <>
         <div className="container mt-5 d-flex flex-column justify-content-center align-items-center">
-            <h2>Find My Booking</h2>
+            <h2>Find My Order-Details</h2>
             <form onSubmit={handleFormSubmit} className="col-md-6">
                 <div className="input-group mb-3">
                     <input className="form-control" id='confirmationCode' name='confirmationCode'
-                    value={confirmationCode} onChange={handleInputChange} placeholder="Enter the Booking Confirmation Code"/>
+                    value={confirmationCode} onChange={handleInputChange} placeholder="Enter the Tile-Order Booking Confirmation Code"/>
 
                     <button className="btn btn-hotel input-group-text">Find Booking</button>
 

@@ -191,22 +191,34 @@ export async function registerUser(registration){
     }
 }
 
-export async function login(login){
+export async function loginUser(login){
+    console.log("logging start");
     try{
-        const response = await api.post("/auth/login",login)
-        if(response.status >= 200 && response.status < 300){
-            return response.data
+
+
+        const response = await api.post("/auth/login", login, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        
+        if (response.status >= 200 && response.status < 300) {
+            return response.data;
+        } else {
+            return null;
         }
-        else{{
-            return null
-        }}
+        
 
 
     }
     catch(error){
         console.error(error)
-        return null
+        console.log("logging exception")
+
+     
+        //return null
     }
+    console.log("logging method executed.")
 }
 
 // Export the getUserProfile function
@@ -249,11 +261,11 @@ export async function getUser(userId, token){
         throw new Error(`User getting single users : ${error.message}`)
     }
 }
-
+//user/{email}/bookings
 /* This is the function to get user bookings by the user id*/
-export async function getBookingsByUserrId(userId, token){
+export async function getBookingsByUserrId(email){
     try{
-        const response = await api.get(`/bookings/user/${userId}/bookings`, {
+        const response = await api.get(`/bookings/user/${email}/bookings`, {
             headers: getHeader()
         })
         return response.data

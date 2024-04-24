@@ -45,10 +45,10 @@ function App() {
               <Route  path="/existing-tiles" element={<ExistingTiles/>} />
               <Route  path="/browse-all-tiles" element={<TileListing/>} />
               <Route  path="/book-tile/:tileId" element={
-                <Checkout/>
-               // <RequireAuth>
-                      // <Checkout/>
-               // </RequireAuth>
+                
+               <RequireAuth>
+                      <Checkout/>
+               </RequireAuth>
                                  } />
               <Route  path="/admin" element={<Admin/>} />
               <Route  path="/booking-success" element={<BookingSuccess/>} />
