@@ -187,7 +187,33 @@ body {
   color: white;
   border-left: 2px solid #676666;
 }
+.contact-form{
+  background-color:  #1f1f1f;
+  margin-top: 60px;
+  margin-bottom: 5px;
+}
+.contact-form p{
+  color: white;
+  font-size: 200px;
+  text-align: center;
+  font-weight: 800;
 
+}
+.contact-form form{
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 80px;
+  
+}
+
+.form-group label{
+  color: #fff;
+  margin-bottom: 12px;
+}
+.form-group input{
+  color: #fff;
+  margin-bottom: 16px;
+}
 
 @keyframes bounceIn {
   from, 20%, 40%, 60%, 80%, to {
