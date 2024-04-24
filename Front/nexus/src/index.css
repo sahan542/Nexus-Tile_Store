@@ -174,19 +174,18 @@ body {
 
 }
 
-.about-cerificate{
+.about-certifications{
   background-color: white;
+
 }
-.about-box h1{
-  font-size: 60px;
-  font-weight: 700;
-  color: black;
-}
-.about-box h4{
+.about-certificate-box h4{
   text-align: right;
+  color: #adabab;
+
 }
-.about-box{
+.about-certificate-box p{
   color: white;
+  border-left: 2px solid #676666;
 }
 
 

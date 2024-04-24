@@ -88,12 +88,12 @@ const About = () => {
                 <Container>
                   <Row className="gx-4 gy-4 mt-3">
                     <Col>
-                      <div className="about-box">
+                      <div className="about-certificate-box">
                         <h4>Download Nexus Tiles PLC Environmental Policy</h4>
                       </div>
                     </Col>
                     <Col>
-                      <div className="about-box">
+                      <div className="about-certificate-box">
                         <p><a href='google.com' className='text-decoration-none'>Download</a></p>
                       </div>
                     </Col>
@@ -102,12 +102,12 @@ const About = () => {
 
                   <Row className="gx-4 gy-4 mt-3">
                     <Col>
-                      <div className="about-box">
+                      <div className="about-certificate-box">
                         <h4>Download Nexus Tiles PLC ISO 14001 Certification</h4>
                       </div>
                     </Col>
                     <Col>
-                      <div className="about-box">
+                      <div className="about-certificate-box">
                         <p><a href='google.com' className='text-decoration-none'>Download</a></p>
                       </div>
                     </Col>
@@ -116,12 +116,12 @@ const About = () => {
 
                   <Row className="gx-4 gy-4 mt-3">
                     <Col>
-                      <div className="about-box">
+                      <div className="about-certificate-box">
                         <h4>Download Nexus Tiles Annual Report 2021/22</h4>
                       </div>
                     </Col>
                     <Col>
-                      <div className="about-box">
+                      <div className="about-certificate-box">
                         <p><a href='google.com' className='text-decoration-none'>Download</a></p>
                       </div>
                     </Col>
@@ -130,12 +130,12 @@ const About = () => {
 
                   <Row className="gx-4 gy-4 mt-3">
                     <Col>
-                      <div className="about-box">
+                      <div className="about-certificate-box">
                         <h4>Download Nexus Tiles Annual Report 2022/23</h4>
                       </div>
                     </Col>
                     <Col>
-                      <div className="about-box">
+                      <div className="about-certificate-box">
                         <p><a href='google.com' className='text-decoration-none'>Download</a></p>
                       </div>
                     </Col>
