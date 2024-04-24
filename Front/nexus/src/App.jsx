@@ -21,6 +21,12 @@ import Profile from './components/auth/Profile.jsx'
 import Logout from './components/auth/Logout.jsx'
 import AuthProvider from './components/auth/AuthProvider.jsx'
 import RequireAuth from './components/auth/RequireAuth.jsx'
+import Contact from './components/page/Contact.jsx'
+import About from './components/page/About.jsx'
+
+
+
+
 
 
 
@@ -52,6 +58,9 @@ function App() {
               <Route  path="/register" element={<Registration/>} />
               <Route  path="/profile" element={<Profile/>} />
               <Route  path="/logout" element={<Logout/>} />
+              <Route  path="/contact" element={<Contact/>} />
+              <Route  path="/about-nexus" element={<About/>} />
+
         
             </Routes>
         </Router>
