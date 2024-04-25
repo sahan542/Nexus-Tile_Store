@@ -330,7 +330,8 @@ const BookingForm = () => {
         bookingDate: "",
         cusAddress: "",
         cusPhone: "",
-        bookingConfirmationCode: ""
+        bookingConfirmationCode: "",
+        tileQuantity: ""
     });
 
     const { tileId } = useParams();
@@ -370,7 +371,10 @@ const BookingForm = () => {
 
     const calculatePayment = () => {
         // You can calculate payment based on the tile price or any other criteria
-        return 800;
+
+        return 800; // Calculate total payment
+
+
     };
 
     const handleSubmit = (e) => {
@@ -425,7 +429,9 @@ const BookingForm = () => {
                                 </Form.Control.Feedback>
                             </Form.Group>
 
+                            
                             <div className="form-group mt-2 mb-2">
+                                
                                 <button className="btn btn-hotel" type="submit">
                                     Continue
                                 </button>
