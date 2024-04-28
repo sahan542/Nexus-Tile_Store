@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/nexus_db?useSSL=false
     username: root
-    password: Asdf@1999
+    password:
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
     startup:

@@ -35,7 +35,7 @@ public class TileController {
     private final BookingService bookedTileService;
 
     @PostMapping("/add/new-tile")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     public ResponseEntity<TileResponse> addNewTile(@RequestParam("photo") MultipartFile photo,
                                                    @RequestParam("collectionType") String collectionType,
                                                    @RequestParam("groupType") String groupType,
